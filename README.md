@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0.0.0&height=220&section=header&text=Hey!%20I%20am%20Pedro%20Rouge&fontSize=40&fontColor=ffffff&subText=Future%20Bachelor%20in%20Systems&subFontSize=20&subColor=ec4899&animation=fadeIn&fontAlignY=38&subAlignY=62&desc=https://raw.githubusercontent.com/leviarista/github-profile-header-generator/main/assets/bg.png" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=rect&color=000000&height=220&section=header&text=Hey!%20I%20am%20Pedro%20Rouge&fontSize=40&fontColor=ffffff&subText=Future%20Bachelor%20in%20Systems&subFontSize=20&subColor=ec4899&animation=fadeIn&fontAlignY=38&subAlignY=62" width="100%" />
 
 <br>
 
