@@ -1,5 +1,13 @@
 <div align="center">
 
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,10,15,30&height=180&section=header&text=Bienvenido%20a%20mi%20GitHub&fontSize=40&fontColor=ffffff&animation=fadeIn&fontAlignY=38" width="100%" />
+
+<br>
+
+<img src="https://komarev.com/ghpvc/?username=PedroRouge&color=blueviolet&style=flat-square&label=VISITAS+AL+PERFIL" alt="Visitas" />
+
+<br><br>
+
 <h3>pedro@github ~ $ ./contributions.sh</h3>
 <img src="./contrib-heatmap.svg" width="860" />
 
