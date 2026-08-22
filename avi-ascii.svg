@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 742" width="100%" height="100%">
+  <style>
+    text {
+      font-family: monospace;
+      font-size: 12px;
+      fill: #c9d1d9;
+    }
+    .wipe {
+      animation: reveal 2.5s steps(100, end) forwards;
+      opacity: 0;
+    }
+    @keyframes reveal {
+      0% { opacity: 0; clip-path: inset(0 100% 0 0); }
+      100% { opacity: 1; clip-path: inset(0 0 0 0); }
+    }
+  </style>
+  <rect width="100%" height="100%" fill="#0d1117" rx="6"/>
+  <g transform="translate(10, 20)">
+    <text x="0" y="0" class="wipe" style="animation-delay: 0.00s;">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@@@@@@@@@@@@@@%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="14" class="wipe" style="animation-delay: 0.03s;">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@%##cc**+**cs##%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="28" class="wipe" style="animation-delay: 0.06s;">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@#*=:....:::::---=c%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="42" class="wipe" style="animation-delay: 0.09s;">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@c-. ..::::.......:=c%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="56" class="wipe" style="animation-delay: 0.12s;">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@%s+:-=+*cccsccc**=--::=#@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="70" class="wipe" style="animation-delay: 0.15s;">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@c--*s###ssscccccssssssc=-#@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="84" class="wipe" style="animation-delay: 0.18s;">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@c:=*##sc++++****cccsss###+=%@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="98" class="wipe" style="animation-delay: 0.21s;">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@%-=+s#*-:::::..=**+--=+*s##*%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="112" class="wipe" style="animation-delay: 0.24s;">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%#++*c##sc*+=-==*s##=:.:=*c%c#@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="126" class="wipe" style="animation-delay: 0.27s;">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@s=+=#ss#s*+=-+==+css*++*ss#*#%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="140" class="wipe" style="animation-delay: 0.30s;">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%s+*ssc=:. :-:. :=-**-=c#%#cc%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="154" class="wipe" style="animation-delay: 0.33s;">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%s+*s*=-.::---=++*=++:-##cc#@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="168" class="wipe" style="animation-delay: 0.36s;">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@s*+=-=+=-.--=+*++++cscs%@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="182" class="wipe" style="animation-delay: 0.39s;">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@%%##%sc+++++------+*ssss#%%%@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="196" class="wipe" style="animation-delay: 0.42s;">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@%%#scssc*=-===::--=+*ssss#@@@@@@@%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="210" class="wipe" style="animation-delay: 0.45s;">@@@@@@@@@@@@@@@@@@@@%%%%%%@@@@@%%%###ccc+*=:.-+=:.:-=*csscs%%%%%%@@@@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="224" class="wipe" style="animation-delay: 0.48s;">@@@@@@@@@@@@@@@@@%@@@@@@@@@@%%%%%%##sscc::-:.-+=:-+**c***c*-*s#####%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="238" class="wipe" style="animation-delay: 0.51s;">@@@@@@@@@@@@@@@%@@%%%%%%%####sscss##sssss=..::::.:=+++++++-  +s######%%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="252" class="wipe" style="animation-delay: 0.54s;">@@@@@@@@@@@@@@%@%#####scs##sssssc==+*cc*c#s+--..:--==--:::-=*s#s#%#sc*s#%##%%@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="266" class="wipe" style="animation-delay: 0.57s;">@@@@@@@@@@@@@%@%###ssssc*s###s*s#s*+*+++++*s#cc+=-::::=+css##########scs#%@@@@%@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="280" class="wipe" style="animation-delay: 0.60s;">@@@@@@@@@@@@%@#s#sssssssc*s###s+s####sscc****css-:+css#s######cs#c+c##sss#%%%%@@%@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="294" class="wipe" style="animation-delay: 0.63s;">@@@@@@@@@@@@@%s#scccccsss**####+*#####ssssssc*cc**sss########ss%#c*c#sc*c#####%%@%@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="308" class="wipe" style="animation-delay: 0.66s;">@@@@@@@@@@@%%%scssc*****cs+c###*+s#####scss##sc*ssss##########%%s*cssc*csssss###%@%@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="322" class="wipe" style="animation-delay: 0.69s;">@@@@@@@@@@@%@s*cs##sc**c*c**##%*=c#####sscccsssccs*csssss#####%%s*cssccsccccs#%%#%@%@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="336" class="wipe" style="animation-delay: 0.72s;">@@@@@@@@@@%%#c##ssssssccssc=c##s=*cs###scc*ccsssss**sssssssss#%%#**cccss**ccs####s%@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="350" class="wipe" style="animation-delay: 0.75s;">@@@@@@@@@@@%sccccc*cccssccsc*ss#*=*cs###s*ccccscss+*cssscc*+-=s##c+**ss+++*csssss#%@%@@@@@@@@@@@@@@@</text>
+    <text x="0" y="364" class="wipe" style="animation-delay: 0.78s;">@@@@@@@@@%%c*s#%%%###ss###c*=ccs#+=**s##s**c*cc*sc++*c##c*--.:*s#s++*s==+*ccc*cc###@%@@@@@@@@@@@@@@@</text>
+    <text x="0" y="378" class="wipe" style="animation-delay: 0.81s;">@@@@@@@@%@#c%#####%%%#####%%#s**ss==+*s#s**c*cc*s*=+*c##*+----+cs#++s*=*c***cscccss%@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="392" class="wipe" style="animation-delay: 0.84s;">@@@@@@@@%@%####ssssssss#######*==cc==+css**c*c*+c++++c#*+=+=-==*s*=cc+***ccs#%ccccc#@%@@@@@@@@@@@@@@</text>
+    <text x="0" y="406" class="wipe" style="animation-delay: 0.87s;">@@@@@@@@@@%s#scccs############c+-=c*-=+csc*scs***++++*sss**++-=cc-+*+++++++++*sss#ss%@@@@@@@@@@@@@@@</text>
+    <text x="0" y="420" class="wipe" style="animation-delay: 0.90s;">@@@@@@@@@@%sccc*cssssscccccss#%%%#s#*:-+cssscs***++****s#sc*=-=*==-:==+*csssccccccss%@%@@@@@@@@@@@@@</text>
+    <text x="0" y="434" class="wipe" style="animation-delay: 0.93s;">@@@@@@@@@%@sccsssccs%%%%%######%%%%%%*c#%%%%##sssc*csc**cssc+=-:-=+cccs#%%%####%%##s#@%@@@@@@@@@@@@@</text>
+    <text x="0" y="448" class="wipe" style="animation-delay: 0.96s;">@@@@@@@@@%@%c#%##sc*+css#############%%%%%%%%%%%%%%%%%%%%%%ss%#*-:*cs#%#######%%%%%%%@%@@@@@@@@@@@@@</text>
+    <text x="0" y="462" class="wipe" style="animation-delay: 0.99s;">@@@@@@@@@@%@######sc*++****cccsss#####%%%#%%%%%%#%%%%%%%%%%#%%%@%c=cccccc**css##%%%#%@@@@@@@@@@@@@@@</text>
+    <text x="0" y="476" class="wipe" style="animation-delay: 1.02s;">@@@@@@@@@@@@%###sccccccccccssss#############%%%%%%#%%%%%%%%%%%%##s=++*cccs###ss###%#@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="490" class="wipe" style="animation-delay: 1.05s;">@@@@@@@@@@@@@%#s+=+++*******cccccssssss####%%%%%%%%%###sscc**csssc*cccsss#####scs#s#@%@@@@@@@@@@@@@@</text>
+    <text x="0" y="504" class="wipe" style="animation-delay: 1.08s;">@@@@@@@@@@@@@@@#c==***+++++++++++++++***cccssssscc*****+++++cscscc**cs#########ss#s%@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="518" class="wipe" style="animation-delay: 1.11s;">@@@@@@@@@@@@@@%@#:..::-===---=+++++***++=--=*c*+++===++++***ccss##sss###########%#%@%@@@@@@@@@@@@@@@</text>
+    <text x="0" y="532" class="wipe" style="animation-delay: 1.14s;">@@@@@@@@@@@@@%%%=.   :++-.    .::-=+*cssscc*cs##sscc***+++=======+*css#########%%#@%@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="546" class="wipe" style="animation-delay: 1.17s;">@@@@@@@@@@@@@%@c.   =ss*-::::..    :-::-=+*cccs##%%###ssssccc***++====++**ccs#%%#%%@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="560" class="wipe" style="animation-delay: 1.20s;">@@@@@@@@@@@@@%%=  -c#s*=---===--.. .--......:===+*ccs###########ssssccccccccs###%@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="574" class="wipe" style="animation-delay: 1.23s;">@@@@@@@@@@@@%@s.:*s#c+*=-===++++=:.  .:-===:-c=.::::--=+++*******ccccccc****c#%%@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="588" class="wipe" style="animation-delay: 1.26s;">@@@@@@@@@@@@%@=-s#s*=*+-==+++****+-:...:=++-s#+-=---=+++-..  ..:++:.:c%%+..:+%@%@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="602" class="wipe" style="animation-delay: 1.29s;">@@@@@@@@@@@@@@*s#c++*+--=+++**cccc*=:..::==+%s*+*=*csc+-.....:-+*+-.:+#%%=.-+#@%@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="616" class="wipe" style="animation-delay: 1.32s;">@@@@@@@@@@@@%@ss*++*+----==+=+*cccc*+-:::-:*%*++*+cc+-::::::--=+*+-:-+*#%%--+s@%@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="630" class="wipe" style="animation-delay: 1.35s;">@@@@@@@@@@@@%@#-..:::::::--=---=+*cc*=-::::ss+=c*cc+=------=+:-=+=--+++s%@*-*#@%@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="644" class="wipe" style="animation-delay: 1.38s;">@@@@@@@@@@@@@%@c=--:.....:..::...:=**+---.-#+==*+*+========*=..:===+*+=s#s+-*%@%@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="658" class="wipe" style="animation-delay: 1.41s;">@@@@@@@@@@@@@@%@@#cc*+=-=====-=--:..:=-:- *c-:+=-+==-:::-=+=.  .:-+*=:--===+#@%@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="672" class="wipe" style="animation-delay: 1.44s;">@@@@@@@@@@@@@@@%%######sssssscssccc**+==--c+=-*+++*****cccc**++++*sscc****s%@%@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="686" class="wipe" style="animation-delay: 1.47s;">@@@@@@@@@@@@@@%@c=+**ccs#####%@%%#sccccscscs%##%#######%%######%%%%%%%%%%@@@%@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="700" class="wipe" style="animation-delay: 1.50s;">@@@@@@@@@@@@@%@#=-==-----=+==+*ccs###sccs#c%%###%%%###s%%%%%%%%%%%%%%%@%%@%%@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="714" class="wipe" style="animation-delay: 1.53s;">@@@@@@@@@@@@%@%*=====-==+++==--=-:.:-++==-+cccsssssscccc****+++***cccss#%%%@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+    <text x="0" y="728" class="wipe" style="animation-delay: 1.56s;">@@@@@@@@@@@%@%*==::--===++=+*++++=:::-++-:. .-===-.:-+*=--==-===+++**cc%@@@@@@@@@@@@@@@@@@@@@@@@@@@@</text>
+  </g>
+</svg>
