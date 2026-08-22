@@ -28,11 +28,9 @@
 <br>
 
 <h3>pedro@github ~ $ git stats --user</h3>
-<p>
+<p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=PedroRouge&show_icons=true&theme=radical&hide_border=true" />
-</p>
-<p>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=PedroRouge&layout=compact&theme=radical" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=PedroRouge&layout=compact&theme=radical&hide_border=true" />
 </p>
 
 </div>
