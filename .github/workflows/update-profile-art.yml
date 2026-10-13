@@ -2,8 +2,8 @@ name: Update profile art
 
 "on":
   schedule:
-    - cron: "17 6 * * *"   # ~06:17 UTC daily
-  workflow_dispatch: {}
+    - cron: "0 */2 * * *"   # Runs every 2 hours automatically
+  workflow_dispatch: {}     # Allows manual 1-click trigger from GitHub Actions tab
   push:
     branches: [main]
 
@@ -15,13 +15,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
       - run: pip install -r scripts/requirements.txt
-      - run: python scripts/fetch_contributions.py
-      - run: python scripts/render_heatmap_svg.py
-      - uses: stefanzweifel/git-auto-commit-action@v5
+
+      - name: Fetch Live GitHub Contributions (GraphQL API)
+        run: python scripts/fetch_contributions.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Render Dynamic Terminal Heatmap SVG
+        run: python scripts/render_heatmap_svg.py
+
+      - name: Commit & Push Updated Heatmap
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: refresh contribution graph [skip ci]"
+          commit_message: "chore: update live contribution graph [skip ci]"
           file_pattern: "data/contributions.json contrib-heatmap.svg contrib-heatmap-live.svg"

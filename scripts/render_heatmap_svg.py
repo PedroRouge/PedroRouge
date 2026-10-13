@@ -16,7 +16,7 @@ def main():
         data = json.load(f)
 
     days = data.get('days', [])
-    total_contribs = sum(d.get('count', 0) for d in days)
+    total_contribs = data.get('total_contributions') if data.get('total_contributions') is not None else sum(d.get('count', 0) for d in days)
 
     if not days:
         print('Error: no days found in data/contributions.json')
