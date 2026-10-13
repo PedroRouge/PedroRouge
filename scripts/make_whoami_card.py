@@ -1,9 +1,9 @@
 import base64
-from PIL import Image, ImageOps, ImageEnhance
+from PIL import Image
 import numpy as np
 
 def generate_whoami_card():
-    # 1. Base64 encode avatar
+    # 1. Base64 encode avatar photo (Pedro)
     avatar_path = 'avatar.png'
     im_avatar = Image.open(avatar_path).convert('RGB')
     im_avatar = im_avatar.resize((260, 260), Image.Resampling.LANCZOS)
@@ -11,34 +11,22 @@ def generate_whoami_card():
     with open('avatar_square.jpg', 'rb') as f:
         b64_avatar = base64.b64encode(f.read()).decode('utf-8')
 
-    # 2. Generate clean ASCII of Pedro
-    im_prepped = Image.open('scripts/source-prepped.png')
-    w, h = im_prepped.size
-    face = im_prepped.crop((int(w * 0.22), int(h * 0.02), int(w * 0.78), int(h * 0.38)))
-
-    cols = 28
-    rows = 18
-    face_resized = face.resize((cols, rows), Image.Resampling.LANCZOS)
-    arr = np.array(face_resized)
-
-    RAMP = ' .:-=+*#%@'
-    ascii_lines = []
-    for r in range(rows):
-        line = []
-        for c in range(cols):
-            val = arr[r, c]
-            if val > 240:
-                line.append(' ')
-            else:
-                idx = int((240 - val) / 240 * len(RAMP))
-                line.append(RAMP[min(idx, len(RAMP) - 1)])
-        # Escape XML characters
-        escaped = ''.join(line).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
-        ascii_lines.append(escaped)
+    # 2. Base64 encode blended puppy ASCII image
+    puppy = Image.open('puppy-ascii.png').convert('RGB')
+    p_thumb = puppy.resize((124, 166), Image.Resampling.LANCZOS)
+    arr = np.array(p_thumb, dtype=np.float32)
+    diff = np.mean(arr, axis=2)
+    target_bg = np.array([13.0, 17.0, 23.0])
+    mask = np.clip((diff - 22.0) / 30.0, 0.0, 1.0)[:, :, np.newaxis]
+    blended = arr * mask + target_bg * (1.0 - mask)
+    out_thumb = Image.fromarray(np.clip(blended, 0, 255).astype(np.uint8))
+    out_thumb.save('puppy-embedded.png')
+    with open('puppy-embedded.png', 'rb') as f:
+        b64_puppy = base64.b64encode(f.read()).decode('utf-8')
 
     # 3. SVG parameters
     width = 880
-    height = 240
+    height = 250
 
     info_rows = [
         ('Name', 'Pedro'),
@@ -53,18 +41,17 @@ def generate_whoami_card():
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="100%" height="100%">',
         '  <defs>',
         '    <clipPath id="circleAvatar">',
-        '      <circle cx="770" cy="132" r="52"/>',
+        '      <circle cx="775" cy="138" r="54"/>',
         '    </clipPath>',
         '    <filter id="greenGlow">',
-        '      <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#39d353" flood-opacity="0.4"/>',
+        '      <feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="#39d353" flood-opacity="0.5"/>',
         '    </filter>',
         '  </defs>',
         '  <style>',
         "    .term-title { font-family: 'SF Mono', 'Courier New', monospace; font-size: 14px; font-weight: 600; fill: #58a6ff; }",
         "    .term-cmd { fill: #39d353; font-weight: 700; }",
-        "    .ascii-text { font-family: 'SF Mono', 'Courier New', monospace; font-size: 9.5px; fill: #39d353; letter-spacing: 1px; }",
-        "    .info-key { font-family: 'SF Mono', 'Courier New', monospace; font-size: 12.5px; font-weight: bold; fill: #58a6ff; }",
-        "    .info-val { font-family: 'SF Mono', 'Courier New', monospace; font-size: 12.5px; fill: #c9d1d9; }",
+        "    .info-key { font-family: 'SF Mono', 'Courier New', monospace; font-size: 13px; font-weight: bold; fill: #58a6ff; }",
+        "    .info-val { font-family: 'SF Mono', 'Courier New', monospace; font-size: 13px; fill: #c9d1d9; }",
         '  </style>',
         '',
         '  <!-- Window Container -->',
@@ -84,23 +71,15 @@ def generate_whoami_card():
         '    pedro@github ~ $ <tspan class="term-cmd">whoami</tspan>',
         '  </text>',
         '',
-        '  <!-- 1. Left Column: Pedro ASCII Portrait -->',
-        '  <g class="ascii-text" transform="translate(30, 85)" xml:space="preserve">'
-    ]
-
-    line_height = 8.0
-    for i, line in enumerate(ascii_lines):
-        svg.append(f'    <text x="0" y="{i * line_height}">{line}</text>')
-
-    svg.extend([
-        '  </g>',
+        '  <!-- 1. Left Column: Matrix Green ASCII Puppy -->',
+        f'  <image href="data:image/png;base64,{b64_puppy}" x="35" y="70" width="124" height="166"/>',
         '',
         '  <!-- 2. Middle Column: Identity Details -->',
-        '  <g transform="translate(245, 96)">'
-    ])
+        '  <g transform="translate(195, 100)">'
+    ]
 
     for i, (k, v) in enumerate(info_rows):
-        y = i * 22
+        y = i * 23
         svg.append(f'    <text x="0" y="{y}" class="info-key">{k}:</text>')
         svg.append(f'    <text x="85" y="{y}" class="info-val">{v}</text>')
 
@@ -110,8 +89,8 @@ def generate_whoami_card():
         '  <!-- 3. Right Column: Pedro Circular Photo -->',
         '  <g>',
         '    <!-- Background circular shadow & border -->',
-        '    <circle cx="770" cy="132" r="55" fill="#161b22" stroke="#39d353" stroke-width="2.5" filter="url(#greenGlow)"/>',
-        f'    <image href="data:image/jpeg;base64,{b64_avatar}" x="718" y="80" width="104" height="104" clip-path="url(#circleAvatar)"/>',
+        '    <circle cx="775" cy="138" r="57" fill="#161b22" stroke="#39d353" stroke-width="2.5" filter="url(#greenGlow)"/>',
+        f'    <image href="data:image/jpeg;base64,{b64_avatar}" x="721" y="84" width="108" height="108" clip-path="url(#circleAvatar)"/>',
         '  </g>',
         '</svg>'
     ])
@@ -119,7 +98,7 @@ def generate_whoami_card():
     with open('whoami.svg', 'w', encoding='utf-8') as f:
         f.write('\n'.join(svg))
 
-    print('Successfully generated whoami.svg!')
+    print('Successfully generated whoami.svg with Matrix ASCII puppy!')
 
 if __name__ == '__main__':
     generate_whoami_card()

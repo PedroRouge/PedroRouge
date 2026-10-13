@@ -1,6 +1,6 @@
 import json
 import os
-import random
+from datetime import datetime, timedelta
 
 PALETTE = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"]
 
@@ -8,32 +8,41 @@ def main():
     output_path = 'contrib-heatmap.svg'
     input_path = 'data/contributions.json'
 
-    total_contribs = 0
-    days = []
-    if os.path.exists(input_path):
-        try:
-            with open(input_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            days = data.get('days', [])
-            total_contribs = sum(d.get('count', 0) for d in days)
-        except Exception:
-            pass
+    if not os.path.exists(input_path):
+        print(f'Error: {input_path} not found. Run fetch_contributions.py first.')
+        return
+
+    with open(input_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    days = data.get('days', [])
+    total_contribs = sum(d.get('count', 0) for d in days)
+
+    if not days:
+        print('Error: no days found in data/contributions.json')
+        return
 
     width = 880
-    height = 230
-    cols = 52
-    rows = 7
+    height = 250
     cell_size = 11
     gap = 4
     step = cell_size + gap
 
-    # Pre-determined decorative seed for nice scattered green squares matching GitHub aesthetic
-    active_spots = {
-        (6, 1): 3, (8, 4): 2, (12, 2): 4, (15, 0): 1, (18, 5): 3,
-        (22, 3): 2, (26, 6): 4, (29, 1): 2, (34, 0): 3, (38, 4): 4,
-        (42, 2): 3, (47, 5): 2, (50, 1): 4, (51, 6): 3, (10, 3): 2,
-        (20, 1): 3, (30, 5): 1, (40, 0): 2, (45, 3): 4, (48, 2): 1
-    }
+    # Determine start date and layout
+    first_date = datetime.strptime(days[0]['date'], '%Y-%m-%d')
+    start_x = 56
+    start_y = 124
+
+    # Calculate month header positions
+    months_seen = set()
+    month_positions = []
+    for i, d in enumerate(days):
+        dt = datetime.strptime(d['date'], '%Y-%m-%d')
+        col = i // 7
+        m_name = dt.strftime('%b')
+        if dt.day <= 7 and m_name not in months_seen:
+            months_seen.add(m_name)
+            month_positions.append((m_name, start_x + col * step))
 
     svg_lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="100%" height="100%">',
@@ -41,9 +50,9 @@ def main():
         "    .term-title { font-family: 'SF Mono', 'Courier New', monospace; font-size: 14px; font-weight: 600; fill: #58a6ff; }",
         "    .term-cmd { fill: #39d353; font-weight: 700; }",
         "    .term-sub { font-family: 'SF Mono', 'Courier New', monospace; font-size: 12px; fill: #8b949e; }",
-        "    .month-lbl { font-family: 'SF Mono', 'Courier New', monospace; font-size: 11px; fill: #8b949e; }",
-        "    .day-lbl { font-family: 'SF Mono', 'Courier New', monospace; font-size: 11px; fill: #8b949e; }",
-        '    .cell { rx: 2.5; ry: 2.5; transition: fill 0.3s; }',
+        "    .month-lbl { font-family: 'SF Mono', 'Courier New', monospace; font-size: 10.5px; fill: #8b949e; }",
+        "    .day-lbl { font-family: 'SF Mono', 'Courier New', monospace; font-size: 10px; fill: #8b949e; }",
+        '    .cell { rx: 2.5; ry: 2.5; }',
         '  </style>',
         '',
         '  <!-- Window Container -->',
@@ -63,51 +72,43 @@ def main():
         '    pedro@github ~ $ <tspan class="term-cmd">./contributions.sh</tspan>',
         '  </text>',
         '',
-        '  <!-- Contribution Counter -->',
-        f'  <text x="24" y="90" class="term-sub">{total_contribs} contributions in the last year</text>',
+        '  <!-- Real Contribution Counter -->',
+        f'  <text x="24" y="88" class="term-sub">{total_contribs} contributions in the last year</text>',
         '',
-        '  <!-- Month Labels -->',
-        '  <g class="month-lbl" transform="translate(68, 114)">',
-        '    <text x="0" y="0">Jan</text>',
-        '    <text x="64" y="0">Feb</text>',
-        '    <text x="128" y="0">Mar</text>',
-        '    <text x="192" y="0">Apr</text>',
-        '    <text x="256" y="0">May</text>',
-        '    <text x="320" y="0">Jun</text>',
-        '    <text x="384" y="0">Jul</text>',
-        '    <text x="448" y="0">Aug</text>',
-        '    <text x="512" y="0">Sep</text>',
-        '    <text x="576" y="0">Oct</text>',
-        '    <text x="640" y="0">Nov</text>',
-        '    <text x="704" y="0">Dec</text>',
-        '  </g>',
-        '',
-        '  <!-- Day Labels -->',
-        '  <g class="day-lbl" transform="translate(38, 137)">',
-        '    <text x="0" y="0">Su</text>',
-        '    <text x="0" y="75">Sa</text>',
-        '  </g>',
-        '',
-        '  <!-- Heatmap Grid -->',
-        '  <g transform="translate(68, 126)">'
+        '  <!-- Month Labels -->'
     ]
 
-    for col in range(cols):
-        for row in range(rows):
-            x = col * step
-            y = row * step
-            color = PALETTE[0]
-            if (col, row) in active_spots:
-                color = PALETTE[active_spots[(col, row)]]
-            svg_lines.append(f'    <rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="{color}" class="cell"/>')
+    for m_name, mx in month_positions:
+        svg_lines.append(f'  <text x="{mx}" y="110" class="month-lbl">{m_name}</text>')
 
-    svg_lines.append('  </g>')
+    svg_lines.extend([
+        '',
+        '  <!-- Day Labels -->',
+        '  <g class="day-lbl">',
+        f'    <text x="{start_x - 22}" y="{start_y + 10}">Su</text>',
+        f'    <text x="{start_x - 22}" y="{start_y + 98}">Sa</text>',
+        '  </g>',
+        '',
+        '  <!-- Real Heatmap Grid -->'
+    ])
+
+    for i, d in enumerate(days):
+        col = i // 7
+        row = i % 7
+        x = start_x + col * step
+        y = start_y + row * step
+        level = min(max(d.get('level', 0), 0), 4)
+        color = PALETTE[level]
+        date_str = d.get('date', '')
+        cnt = d.get('count', 0)
+        svg_lines.append(f'  <rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="{color}" class="cell"><title>{cnt} contributions on {date_str}</title></rect>')
+
     svg_lines.append('</svg>')
 
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write('\n'.join(svg_lines))
 
-    print(f'Generated {output_path}')
+    print(f'Successfully rendered {output_path} with {total_contribs} REAL contributions across {len(days)} days!')
 
 if __name__ == '__main__':
     main()
