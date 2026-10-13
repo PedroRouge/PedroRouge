@@ -17,14 +17,14 @@
 <!-- ========================================== -->
 <!-- 2. ./contributions.sh (Terminal Heatmap)   -->
 <!-- ========================================== -->
-<img src="./contrib-heatmap.svg" width="100%" alt="contributions.sh" />
+<img src="./contrib-heatmap-live.svg" width="100%" alt="contributions.sh" />
 
 <br/><br/>
 
 <!-- ========================================== -->
 <!-- 3. whoami (Terminal Identity Card)         -->
 <!-- ========================================== -->
-<img src="./whoami.svg" width="100%" alt="whoami" />
+<img src="./whoami-card.svg" width="100%" alt="whoami" />
 
 <br/><br/>
 

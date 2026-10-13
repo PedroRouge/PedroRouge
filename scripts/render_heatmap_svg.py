@@ -105,10 +105,11 @@ def main():
 
     svg_lines.append('</svg>')
 
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write('\n'.join(svg_lines))
+    for p in ['contrib-heatmap.svg', 'contrib-heatmap-live.svg']:
+        with open(p, 'w', encoding='utf-8') as f:
+            f.write('\n'.join(svg_lines))
 
-    print(f'Successfully rendered {output_path} with {total_contribs} REAL contributions across {len(days)} days!')
+    print(f'Successfully rendered contrib-heatmap.svg & contrib-heatmap-live.svg with {total_contribs} REAL contributions across {len(days)} days!')
 
 if __name__ == '__main__':
     main()
