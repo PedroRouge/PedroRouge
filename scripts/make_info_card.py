@@ -3,55 +3,35 @@ import os
 def main():
     output_path = 'info-card.svg'
 
-    # You can customize these lines to tell your story
     rows = [
-        ('Role', 'Software Developer & Builder'),
-        ('Stack', 'Python, JavaScript, Git'),
-        ('Focus', 'Automation & Creative Coding'),
+        ('Name', 'Pedro'),
+        ('Role', 'Future Systems Graduate'),
+        ('Focus', 'Backend, DevOps, Architecture'),
+        ('Stack', 'Python, C++, Docker, Linux, Git'),
         ('Location', 'Argentina'),
-        ('Status', 'Building awesome things')
+        ('Status', 'Ready to deploy')
     ]
 
-    width = 460
-    height = 200
+    width = 480
+    height = 220
 
     svg_lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="100%" height="100%">',
         '  <style>',
-        '    text {',
-        '      font-family: monospace;',
-        '      font-size: 13px;',
-        '    }',
-        '    .title {',
-        '      fill: #ff7b72;',
-        '      font-weight: bold;',
-        '    }',
-        '    .key {',
-        '      fill: #79c0ff;',
-        '    }',
-        '    .val {',
-        '      fill: #c9d1d9;',
-        '    }',
-        '    .card-row {',
-        '      animation: fadeIn 0.8s ease forwards;',
-        '      opacity: 0;',
-        '    }',
-        '    @keyframes fadeIn {',
-        '      to { opacity: 1; }',
-        '    }',
+        '    text { font-family: "SF Mono", monospace, monospace; font-size: 13px; }',
+        '    .title { fill: #39d353; font-weight: bold; }',
+        '    .key { fill: #58a6ff; font-weight: 600; }',
+        '    .val { fill: #c9d1d9; }',
         '  </style>',
-        '  <rect width="100%" height="100%" fill="#0d1117" rx="6"/>',
-        '  <g transform="translate(20, 30)">',
-        '    <text x="0" y="0" class="title">pedro@github:~</text>'
+        '  <rect width="100%" height="100%" fill="#0d1117" rx="8" stroke="#30363d" stroke-width="1.5"/>',
+        '  <g transform="translate(24, 34)">',
+        '    <text x="0" y="0" class="title">pedro@github:~ $ whoami</text>'
     ]
 
     for i, (key, val) in enumerate(rows):
-        y = 35 + (i * 28)
-        delay = 0.2 + (i * 0.15)
-        svg_lines.append(f'    <g class="card-row" style="animation-delay: {delay}s;">')
-        svg_lines.append(f'      <text x="0" y="{y}" class="key">{key}:</text>')
-        svg_lines.append(f'      <text x="110" y="{y}" class="val">{val}</text>')
-        svg_lines.append(f'    </g>')
+        y = 30 + (i * 26)
+        svg_lines.append(f'    <text x="0" y="{y}" class="key">{key}:</text>')
+        svg_lines.append(f'    <text x="90" y="{y}" class="val">{val}</text>')
 
     svg_lines.append('  </g>')
     svg_lines.append('</svg>')
