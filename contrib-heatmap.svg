@@ -26,7 +26,7 @@
   </text>
 
   <!-- Real Contribution Counter -->
-  <text x="24" y="88" class="term-sub">381 contributions in the last year</text>
+  <text x="24" y="88" class="term-sub">382 contributions in the last year</text>
 
   <!-- Month Labels -->
   <text x="71" y="110" class="month-lbl">Nov</text>
@@ -418,5 +418,5 @@
   <rect x="836" y="154" width="11" height="11" fill="#26a641" class="cell"><title>10 contributions on 2026-10-20</title></rect>
   <rect x="836" y="169" width="11" height="11" fill="#006d32" class="cell"><title>5 contributions on 2026-10-21</title></rect>
   <rect x="836" y="184" width="11" height="11" fill="#0e4429" class="cell"><title>4 contributions on 2026-10-22</title></rect>
-  <rect x="836" y="199" width="11" height="11" fill="#0e4429" class="cell"><title>3 contributions on 2026-10-23</title></rect>
+  <rect x="836" y="199" width="11" height="11" fill="#0e4429" class="cell"><title>4 contributions on 2026-10-23</title></rect>
 </svg>
